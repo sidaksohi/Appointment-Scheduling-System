@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.MainScreenController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bg_ux4_1.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="265.0" layoutY="85.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="48.0" prefWidth="800.0" spacing="55.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="46.0" prefWidth="103.0" style="-fx-background-color: TRANSPARENT;" text="Log Out" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Cocogoose" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="TOP_CENTER" prefHeight="49.0" prefWidth="490.0" text="Main Menu">
+                     <font>
+                        <Font name="Cocogoose" size="31.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient cycleMethod="REFLECT" endX="0.16504854368932032" endY="0.3495145631067961">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="#c6d0d0" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <VBox prefHeight="81.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="800.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#addCustomer" text="Add Customer" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#modifyCustomer" text="Modify Customer" />
+                        <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addAppointment" text="Add Appointment" />
+                        <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#modifyAppointment" text="Modify Appointment" />
+                        <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#reports" text="Reports" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <Pane opacity="0.64" prefHeight="361.0" prefWidth="800.0" style="-fx-background-color: BLACK; -fx-border-radius: 18 18 0 0; -fx-background-radius: 18 18 0 0;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="14.0" prefHeight="42.0" prefWidth="800.0" spacing="10.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="50.0" prefWidth="216.0" text="Appointment Schedule" textFill="WHITE">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="byDay" layoutX="349.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#viewToday" prefHeight="30.0" prefWidth="105.0" text="View Today" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="aptViewButtons" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="byWeek" mnemonicParsing="false" onMouseClicked="#viewWeek" prefHeight="30.0" prefWidth="121.0" text="View by Week" textFill="WHITE" toggleGroup="$aptViewButtons" />
+                        <RadioButton fx:id="byMonth" layoutX="190.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#viewMonth" prefHeight="31.0" prefWidth="128.0" text="View by Month" textFill="WHITE" toggleGroup="$aptViewButtons" />
+                        <RadioButton fx:id="viewAllButon" layoutX="311.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#viewAll" prefHeight="33.0" prefWidth="80.0" text="View All" textFill="WHITE" toggleGroup="$aptViewButtons" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <VBox layoutX="-1.0" layoutY="52.0" prefHeight="311.0" prefWidth="800.0">
+                     <children>
+                        <Label fx:id="timezoneLabel" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="800.0" text="Time Zone: UTC" textFill="#7c7c7c">
+                           <VBox.margin>
+                              <Insets right="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="aptTable" prefHeight="295.0" prefWidth="800.0">
+                          <columns>
+                            <TableColumn fx:id="aptidcol" prefWidth="29.0" text="ID" />
+                            <TableColumn fx:id="customercol" prefWidth="116.0" text="Customer" />
+                              <TableColumn fx:id="titlecol" prefWidth="116.0" text="Title" />
+                              <TableColumn fx:id="descriptioncol" prefWidth="191.0" text="Description" />
+                              <TableColumn fx:id="typecol" prefWidth="100.0" text="Type" />
+                              <TableColumn fx:id="datecol" prefWidth="99.0" text="Date" />
+                              <TableColumn fx:id="starttimecol" minWidth="72.0" prefWidth="72.0" text="Start" />
+                              <TableColumn fx:id="endtimecol" minWidth="72.0" prefWidth="72.0" text="End" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
