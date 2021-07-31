@@ -1,5 +1,6 @@
 # Appointment-Scheduling-System
 Appointment Scheduling System using Java, JavaFX, XML, and MySQL.
+Uses MVC architecture.
 
 # Features
 - Login Validation
